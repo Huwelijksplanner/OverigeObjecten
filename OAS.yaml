@@ -1,734 +1,419 @@
-openapi: 3.0.3
-servers:
-  - url: localhost/api
+openapi: 3.0.2
+x-stoplight:
+  id: 11slxyakyxdt0
 info:
-  description: 'This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.'
-  version: 1.0.0
-  title: Swagger Petstore
-  termsOfService: 'http://swagger.io/terms/'
+  title: Overige Objecten
+  version: V1.0
+  description: |
+    Het Memo Component biedt de generieke mogelijkheid om gebruikers memo’s (notities) te laten aanmaken of resources (bijvoorbeeld Common Ground resources). Deze functionaliteit is bewust abstract opgezet. In wezen kan elke gebruiker over alles een memo aanmaken. Dat biedt ook de mogelijkheid om voor elke willekeurige resource het component te bevragen en te zien of er memo’s voor staan. Memo’s worden in principe gezien als organisatie-intern en zijn nadrukkelijk geen communicatiekanaal met de klant, daarvoor zijn ‘contactmomenten’ beschikbaar.         
   contact:
-    email: apiteam@swagger.io
-  license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-tags:
-  - name: pet
-    description: Everything about your Pets
-    externalDocs:
-      description: Find out more
-      url: 'http://swagger.io'
-  - name: store
-    description: Access to Petstore orders
-  - name: user
-    description: Operations about user
-    externalDocs:
-      description: Find out more about our store
-      url: 'http://swagger.io'
-paths:
-  /pet:
-    post:
-      tags:
-        - pet
-      summary: Add a new pet to the store
-      description: ''
-      operationId: addPet
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pet'
-        '405':
-          description: Invalid input
-      security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
-      requestBody:
-        $ref: '#/components/requestBodies/Pet'
-    put:
-      tags:
-        - pet
-      summary: Update an existing pet
-      description: ''
-      operationId: updatePet
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pet'
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
-      security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
-      requestBody:
-        $ref: '#/components/requestBodies/Pet'
-  /pet/findByStatus:
-    get:
-      tags:
-        - pet
-      summary: Finds Pets by status
-      description: Multiple status values can be provided with comma separated strings
-      operationId: findPetsByStatus
-      parameters:
-        - name: status
-          in: query
-          description: Status values that need to be considered for filter
-          required: true
-          explode: true
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - available
-                - pending
-                - sold
-              default: available
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pet'
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pet'
-        '400':
-          description: Invalid status value
-      security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
-  /pet/findByTags:
-    get:
-      tags:
-        - pet
-      summary: Finds Pets by tags
-      description: 'Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.'
-      operationId: findPetsByTags
-      parameters:
-        - name: tags
-          in: query
-          description: Tags to filter by
-          required: true
-          explode: true
-          schema:
-            type: array
-            items:
-              type: string
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Pet'
-        '400':
-          description: Invalid tag value
-      security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
-      deprecated: true
-  '/pet/{petId}':
-    get:
-      tags:
-        - pet
-      summary: Find pet by ID
-      description: Returns a single pet
-      operationId: getPetById
-      parameters:
-        - name: petId
-          in: path
-          description: ID of pet to return
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Pet'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pet'
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Pet not found
-      security:
-        - api_key: []
-    post:
-      tags:
-        - pet
-      summary: Updates a pet in the store with form data
-      description: ''
-      operationId: updatePetWithForm
-      parameters:
-        - name: petId
-          in: path
-          description: ID of pet that needs to be updated
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-        '405':
-          description: Invalid input
-      security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              type: object
-              properties:
-                name:
-                  description: Updated name of the pet
-                  type: string
-                status:
-                  description: Updated status of the pet
-                  type: string
-    delete:
-      tags:
-        - pet
-      summary: Deletes a pet
-      description: ''
-      operationId: deletePet
-      parameters:
-        - name: api_key
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: petId
-          in: path
-          description: Pet id to delete
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Pet not found
-      security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
-  '/pet/{petId}/uploadImage':
-    post:
-      tags:
-        - pet
-      summary: uploads an image
-      description: ''
-      operationId: uploadFile
-      parameters:
-        - name: petId
-          in: path
-          description: ID of pet to update
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiResponse'
-      security:
-        - petstore_auth:
-            - 'write:pets'
-            - 'read:pets'
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                additionalMetadata:
-                  description: Additional data to pass to server
-                  type: string
-                file:
-                  description: file to upload
-                  type: string
-                  format: binary
-  /store/inventory:
-    get:
-      tags:
-        - store
-      summary: Returns pet inventories by status
-      description: Returns a map of status codes to quantities
-      operationId: getInventory
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Inventory'
-      security:
-        - api_key: []
-  /store/order:
-    post:
-      tags:
-        - store
-      summary: Place an order for a pet
-      description: ''
-      operationId: placeOrder
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Order'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Order'
-        '400':
-          description: Invalid Order
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Order'
-        description: order placed for purchasing the pet
-        required: true
-  '/store/order/{orderId}':
-    get:
-      tags:
-        - store
-      summary: Find purchase order by ID
-      description: For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions
-      operationId: getOrderById
-      parameters:
-        - name: orderId
-          in: path
-          description: ID of pet that needs to be fetched
-          required: true
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 10
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Order'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Order'
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Order not found
-    delete:
-      tags:
-        - store
-      summary: Delete purchase order by ID
-      description: For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
-      operationId: deleteOrder
-      parameters:
-        - name: orderId
-          in: path
-          description: ID of the order that needs to be deleted
-          required: true
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-      responses:
-        '200':
-          description: OK
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Order not found
-  # /user:
-  #   post:
-  #     tags:
-  #       - user
-  #     summary: Create user
-  #     description: This can only be done by the logged in user.
-  #     operationId: createUser
-  #     responses:
-  #       default:
-  #         description: successful operation
-  #     requestBody:
-  #       content:
-  #         application/json:
-  #           schema:
-  #             $ref: '#/components/schemas/User'
-  #       description: Created user object
-  #       required: true
-  # /user/createWithArray:
-  #   post:
-  #     tags:
-  #       - user
-  #     summary: Creates list of users with given input array
-  #     description: ''
-  #     operationId: createUsersWithArrayInput
-  #     responses:
-  #       default:
-  #         description: successful operation
-  #     requestBody:
-  #       $ref: '#/components/requestBodies/UserArray'
-  # /user/createWithList:
-  #   post:
-  #     tags:
-  #       - user
-  #     summary: Creates list of users with given input array
-  #     description: ''
-  #     operationId: createUsersWithListInput
-  #     responses:
-  #       default:
-  #         description: successful operation
-  #     requestBody:
-  #       $ref: '#/components/requestBodies/UserArray'
-  # /user/login:
-  #   get:
-  #     tags:
-  #       - user
-  #     summary: Logs user into the system
-  #     description: ''
-  #     operationId: loginUser
-  #     parameters:
-  #       - name: username
-  #         in: query
-  #         description: The user name for login
-  #         required: true
-  #         schema:
-  #           type: string
-  #       - name: password
-  #         in: query
-  #         description: The password for login in clear text
-  #         required: true
-  #         schema:
-  #           type: string
-  #     responses:
-  #       '200':
-  #         description: successful operation
-  #         headers:
-  #           X-Rate-Limit:
-  #             description: calls per hour allowed by the user
-  #             schema:
-  #               type: integer
-  #               format: int32
-  #           X-Expires-After:
-  #             description: date in UTC when token expires
-  #             schema:
-  #               type: string
-  #               format: date-time
-  #         content:
-  #           application/xml:
-  #             schema:
-  #               type: string
-  #           application/json:
-  #             schema:
-  #               type: string
-  #       '400':
-  #         description: Invalid username/password supplied
-  # /user/logout:
-  #   get:
-  #     tags:
-  #       - user
-  #     summary: Logs out current logged in user session
-  #     description: ''
-  #     operationId: logoutUser
-  #     responses:
-  #       default:
-  #         description: successful operation
-  # '/user/{username}':
-    # get:
-    #   tags:
-    #     - user
-    #   summary: Get user by user name
-    #   description: ''
-    #   operationId: getUserByName
-    #   parameters:
-    #     - name: username
-    #       in: path
-    #       description: 'The name that needs to be fetched. Use user1 for testing. '
-    #       required: true
-    #       schema:
-    #         type: string
-    #   responses:
-    #     '200':
-    #       description: successful operation
-    #       content:
-    #         application/xml:
-    #           schema:
-    #             $ref: '#/components/schemas/User'
-    #         application/json:
-    #           schema:
-    #             $ref: '#/components/schemas/User'
-    #     '400':
-    #       description: Invalid username supplied
-    #     '404':
-    #       description: User not found
-    # put:
-    #   tags:
-    #     - user
-    #   summary: Updated user
-    #   description: This can only be done by the logged in user.
-    #   operationId: updateUser
-    #   parameters:
-    #     - name: username
-    #       in: path
-    #       description: name that need to be updated
-    #       required: true
-    #       schema:
-    #         type: string
-    #   responses:
-    #     '200':
-    #       description: OK
-    #     '400':
-    #       description: Invalid user supplied
-    #     '404':
-    #       description: User not found
-    #   requestBody:
-    #     content:
-    #       application/json:
-    #         schema:
-    #           $ref: '#/components/schemas/User'
-    #     description: Updated user object
-    #     required: true
-    # delete:
-      # tags:
-      #   - user
-      # summary: Delete user
-      # description: This can only be done by the logged in user.
-      # operationId: deleteUser
-      # parameters:
-      #   - name: username
-      #     in: path
-      #     description: The name that needs to be deleted
-      #     required: true
-      #     schema:
-      #       type: string
-      # responses:
-      #   '200':
-      #     description: OK
-      #   '400':
-      #     description: Invalid username supplied
-      #   '404':
-      #     description: User not found
-externalDocs:
-  description: Find out more about Swagger
-  url: 'http://swagger.io'
+    name: Ruben van der LInde
+    url: www.conduction.nl
+    email: ruben@conduction.nl
+paths: {}
 components:
-  responses:
-    PetResponse:
-      description: successful operation
-      content:
-        application/xml:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/Pet'
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/Pet'
-    UserResponse:
-      description: User response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/User'
-  requestBodies:
-    UserArray:
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/User'
-      description: List of user object
-      required: true
-    Pet:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Pet'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/Pet'
-      description: Pet object that needs to be added to the store
-      required: true
-  securitySchemes:
-    petstore_auth:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: 'http://petstore.swagger.io/oauth/dialog'
-          scopes:
-            'write:pets': modify pets in your account
-            'read:pets': read your pets
-    api_key:
-      type: apiKey
-      name: api_key
-      in: header
   schemas:
-    Order:
+    Note:
       type: object
+      description: |-
+        Based on  [NoteDigitalDocument](https://schema.org/NoteDigitalDocument)  
+
+        Biedt de generieke mogelijkheid om gebruikers notities te laten aanmaken of resources (bijvoorbeeld Common Ground resources). Deze functionaliteit is bewust abstract opgezet. In wezen kan elke gebruiker over alles een memo aanmaken. Dat biedt ook de mogelijkheid om voor elke willekeurige resource het component te bevragen en te zien of er memo’s voor staan. Memo’s worden in principe gezien als organisatie-intern en zijn nadrukkelijk geen communicatiekanaal met de klant, daarvoor zijn ‘contactmomenten’ beschikbaar.      
+      title: Note
       properties:
         id:
-          type: integer
-          format: int64
-        petId:
-          type: integer
-          format: int64
-        quantity:
-          type: integer
-          format: int32
-        shipDate:
+          description: The UUID identifier of this object
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+          readOnly: true
+        author:
+          type: string
+          description: The user that made this node
+          externalDocs:
+            url: 'http://schema.org/url'
+          format: uri
+        topic:
+          type: string
+          description: The objcet that this note is about
+          externalDocs:
+            url: 'http://schema.org/url'
+          format: uri
+        name:
+          description: Name of the memo
+          type: string
+        description:
+          description: Description of the memo
+          type: string
+        dateCreated:
+          description: The moment this resource was created
           type: string
           format: date-time
-        status:
+        dateModified:
+          description: The moment this resource last Modified
           type: string
-          description: Order Status
-          enum:
-            - placed
-            - approved
-            - delivered
-        complete:
-          type: boolean
-          default: false
-      xml:
-        name: Order
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        username:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-        password:
-          type: string
-        phone:
-          type: string
-        userStatus:
-          type: integer
-          format: int32
-          description: User Status
-      xml:
-        name: User
-    Category:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      xml:
-        name: Category
-    Tag:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      xml:
-        name: Tag
-    Pet:
-      type: object
+          format: date-time
       required:
+        - author
+        - topic
         - name
-        - photoUrls
+        - description
+    Review:
+      type: object
+      description: |-
+        Based on  [Review](https://schema.org/Review)  
+
+        Biedt de generieke mogelijkheid om gebruikers reviews te geven over objecten
+      title: Review
       properties:
         id:
-          type: integer
-          format: int64
-        category:
-          $ref: '#/components/schemas/Category'
-        name:
+          description: The UUID identifier of this object
+          externalDocs:
+            url: 'http://schema.org/identifier'
           type: string
-          example: doggie
-        photoUrls:
+          format: uuid
+          readOnly: true
+        author:
+          type: string
+          description: The user that made this node
+          externalDocs:
+            url: 'http://schema.org/url'
+          format: uri
+        topic:
+          type: string
+          description: The objcet that this note is about
+          externalDocs:
+            url: 'http://schema.org/url'
+          format: uri
+        name:
+          description: Name of the memo
+          type: string
+        description:
+          description: Description of the memo
+          type: string
+        rating:
+          type: integer
+        dateCreated:
+          description: The moment this resource was created
+          type: string
+          format: date-time
+        dateModified:
+          description: The moment this resource last Modified
+          type: string
+          format: date-time
+      required:
+        - author
+        - topic
+        - name
+        - description
+    Read:
+      title: Read
+      x-stoplight:
+        id: lsfow8i9lmy1g
+      type: object
+      description: 'The read Action is based on https://schema.org/ReadAction and aimed at holding information about when a user last read an object'
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of this object
+          readOnly: true
+        agent:
+          type: string
+          format: uir
+          description: The direct performer or driver of the action (animate or inanimate). e.g. John wrote a book.
+        object:
+          type: string
+          description: 'The object upon which the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn''t). e.g. John read a book.'
+          format: uri
+        actionStatus:
+          type: string
+          description: 'Indicates the current disposition of the Action. Based on [ActionStatusType](https://schema.org/ActionStatusType)'
+          enum:
+            - Active
+            - Completed
+            - Failed
+            - Potential
+        instrument:
+          type: string
+          description: The object that helped the agent perform the action. e.g. John wrote a book with a pen.
+        location:
+          type: string
+          description: 'The location of, for example, where an event is happening, where an organization is located, or where an action takes place.'
+        participants:
           type: array
-          xml:
-            name: photoUrl
-            wrapped: true
+          description: "\tOther co-agents that participated in the action indirectly. e.g. John wrote a book with Steve."
           items:
             type: string
-        tags:
+            format: url
+        provider:
+          description: 'The service provider, service operator, or service performer; '
+          type: string
+        result:
+          type: string
+          description: The result produced in the action. e.g. John wrote a book.
+          format: json
+        error:
+          type: string
+          description: "\tFor failed actions, more information on the cause of the failure."
+        endTime:
+          type: string
+          description: |-
+            The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to December. For media, including audio and video, it's the time offset of the end of a clip within a larger file.
+
+            Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
+          format: date-time
+        startTime:
+          type: string
+          description: |-
+            The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.
+
+            Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
+          format: date-time
+        target:
+          type: string
+          description: 'Indicates a target EntryPoint for an Action. Based on [EntryPoint](https://schema.org/EntryPoint)'
+          format: url
+        dateCreated:
+          description: The moment this resource was created
+          type: string
+          format: date-time
+        dateModified:
+          description: The moment this resource last Modified
+          type: string
+          format: date-time
+      required:
+        - agent
+        - object
+    Search:
+      title: Search
+      x-stoplight:
+        id: xw6qc4983qp6i
+      type: object
+      description: 'The search object is based on https://schema.org/SearchAction and is meant to hold search actions perfermoed by users, with other words it preserfec a search history.'
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of this object
+          readOnly: true
+        agent:
+          type: string
+          format: uir
+          description: The direct performer or driver of the action (animate or inanimate). e.g. John wrote a book.
+        object:
+          type: string
+          description: 'The object upon which the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn''t). e.g. John read a book.'
+          format: uri
+        actionStatus:
+          type: string
+          description: 'Indicates the current disposition of the Action. Based on [ActionStatusType](https://schema.org/ActionStatusType)'
+          enum:
+            - Active
+            - Completed
+            - Failed
+            - Potential
+        instrument:
+          type: string
+          description: The object that helped the agent perform the action. e.g. John searched with the generic search feature.
+        location:
+          type: string
+          description: 'The location of, for example, where an event is happening, where an organization is located, or where an action takes place.'
+        participants:
           type: array
-          xml:
-            name: tag
-            wrapped: true
+          description: "\tOther co-agents that participated in the action indirectly. e.g. John wrote a book with Steve."
           items:
-            $ref: '#/components/schemas/Tag'
+            type: string
+            format: url
+        provider:
+          type: string
+          description: 'The service provider, service operator, or service performer; e.g ElasticSearch'
+          example: ElasticSearch
+        result:
+          type: object
+          description: The result produced in the action. e.g. John wrote a book.
+          format: json
+        error:
+          type: string
+          description: "\tFor failed actions, more information on the cause of the failure."
+        endTime:
+          type: string
+          description: |-
+            The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to December. For media, including audio and video, it's the time offset of the end of a clip within a larger file.
+
+            Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
+          format: date-time
+        startTime:
+          type: string
+          description: |-
+            The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.
+
+            Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
+          format: date-time
+        target:
+          type: string
+          description: 'Indicates a target EntryPoint for an Action. Based on [EntryPoint](https://schema.org/EntryPoint)'
+          format: url
+        dateCreated:
+          description: The moment this resource was created
+          type: string
+          format: date-time
+        dateModified:
+          description: The moment this resource last Modified
+          type: string
+          format: date-time
+      required:
+        - agent
+        - object
+    Taxanomy:
+      title: Taxanomy
+      x-stoplight:
+        id: 20f0jimmrwhsp
+      type: object
+      description: |-
+        Lously bassed on how taxanomies work in wordpress,  txoonomies represent a clustering of data. Be it posts, products or otherwise. The taxonomy presents a hyrichal way of ordering this data into a structure. 
+
+        Taxonomies them selfs do not link to other objects. Instead  objects themself should  implement a taxonomie interface in the form of a taxonomy property that contains an array of uri's. And an query parameter  to  serach for them. e.g. `?toxonommy[]={uri}`
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identiefier of  this object
+          readOnly: true
+        name:
+          type: string
+          description: The nema of this taxanomy
+        description:
+          type: string
+          description: The textual description of this  taxonomy
+        parent:
+          $ref: '#/components/schemas/Taxanomy'
+    Medewerker:
+      title: Medewerker
+      x-stoplight:
+        id: gmldjf8qkjkhu
+      type: object
+      description: 'Dit ORC medewerker object vang kiss specifieke wensen af. Let op het is verstandig de medewerker op te halen met ?extend[]=contact&extend[]=calendar zodat de contact en agenda gegevens meteen mee komen. '
+      properties:
+        id:
+          type: string
+          format: uuid
+        user:
+          type: string
+          format: email
+          description: URI Verwijzing naar de bij deze medewerk horende gebruiker
+        contact:
+          type: string
+          description: 'Een verwijzing naar de contact gegeven van de medewerker in de [klanten API ](https://redocly.github.io/redoc/?nocors&url=https://kissdevelopment-dimpact.commonground.nu/openapi.json#tag/Klant-Klanten-collection/operation/klanten%20Klant_post)'
+          format: uri
+        department:
+          type: string
+        function:
+          type: string
+          description: De funtie titel die door deze medewerker word bekleed
+        calendar:
+          type: string
+          description: 'Verwijzing naar de [agenda](https://redocly.github.io/redoc/?nocors&url=https://kissdevelopment-dimpact.commonground.nu/openapi.json#tag/Calendar-AgendaService-collection/operation/calendars%20Calendar_post) van deze medwerker waar de availabiliy en tasks kunnen worden opgehaald. '
+          format: uri
+        replacement:
+          type: string
+          description: 'Verwijzing naar een andere [medewerker](https://redocly.github.io/redoc/?nocors&url=https://kissdevelopment-dimpact.commonground.nu/openapi.json#tag/MedewerkerOverige-objecten/operation/medewerkers%20Medewerker_post) die deze medewerker vervangt indien niet aanwezig/onbechickbaar'
+          format: uri
+        skills:
+          description: An array of skills associated with this employee (used as starting values for search indexes)
+          type: string
+        description:
+          type: string
+    Instemming:
+      title: Claim
+      x-stoplight:
+        id: m8mgmtrdxm03d
+      type: object
+      description: 'A claim within huwelijksplanner marks a consent, assent or aproval by a user, person or organisation to a fact or actiont. As such it align closly with  both [claims](https://schema.org/Claim) and [verifiable credentials](https://www.w3.org/TR/vc-data-model/). '
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+          format: uri
+          description: 'The subject of consent, assent or aproval, should be a object'
+        type:
+          type: array
+          description: 'https://www.w3.org/TR/vc-data-model/#types'
+          items:
+            type: string
+        issuer:
+          type: string
+        issuanceDate:
+          type: string
+        credentialSubject:
+          type: string
+          description: 'https://www.w3.org/TR/vc-data-model/#credential-subject '
+      required:
+        - type
+        - issuer
+        - credentialSubject
+    Assent:
+      title: Assent
+      x-stoplight:
+        id: rbt37bbzffjy8
+      type: object
+      description: 'Bassed on https://github.com/ConductionNL/instemming-registratie-component/blob/master/api/src/Entity/Assent.php'
+      x-context: schema.conduction.nl/assent
+      properties:
+        id:
+          type: string
+        token:
+          type: string
+          description: A secret token used to validate the assent
+          maxLength: 255
+        name:
+          type: string
+          description: The name of this assend is displayed as a title to end users and should make clear what they arre assending to
+          maxLength: 255
+        description:
+          type: string
+          description: The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to
+        request:
+          type: string
+          maxLength: 255
+          description: The request that this assent applies to
+        forwardUrl;:
+          type: string
+          description: The request that this assent applies to
+          maxLength: 255
+        property:
+          type: string
+          description: The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk
+          maxLength: 255
+        process:
+          type: string
+          description: The process that this assent originated from
+          maxLength: 255
+        contact:
+          type: string
+          description: The contact that this assent applies to
+          maxLength: 255
+        person:
+          type: string
+          maxLength: 255
+          description: The person that this assent applies to
         status:
           type: string
-          description: pet status in the store
+          maxLength: 255
           enum:
-            - available
-            - pending
-            - sold
-      xml:
-        name: Pet
-    Inventory:
-      type: object
-      properties:
-        additionalProperty:
-          type: integer
-          format: int32
-    ApiResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        type:
+            - requested
+            - granted
+            - submitted
+            - declined
+            - cancelled
+            - withdrawn
+          description: 'The status of this assent e.g. requested, granted, declined, cancelled, withdrawn'
+        requester:
           type: string
-        message:
-          type: string
-  examples:
-    Order:
-      value:
-        quantity: 1
-        shipDate: '2018-10-19T16:46:45Z'
-        status: placed
-        complete: false
+          description: The organisation (RSIN) or person (BSN) that is responsible for making this assent
+          maxLength: 255
+      required:
+        - name
+        - requester

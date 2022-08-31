@@ -10,7 +10,75 @@ info:
     name: Ruben van der LInde
     url: www.conduction.nl
     email: ruben@conduction.nl
-paths: {}
+paths:
+  /assents:
+    get:
+      summary: GET Assents
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assent'
+      operationId: get-assents
+    post:
+      summary: POST Assent
+      operationId: post-assents
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assent'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assent'
+  '/assents/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: GET Assent
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assent'
+      operationId: get-assents-id
+    put:
+      summary: PUT Assent
+      operationId: put-assents-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assent'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assent'
+    delete:
+      summary: DELETE Assent
+      operationId: delete-assents-id
+      responses:
+        '200':
+          description: OK
 components:
   schemas:
     Note:

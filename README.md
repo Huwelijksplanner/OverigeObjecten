@@ -1,4 +1,4 @@
-# Pet Store API
+# Overige objecten
 
 [![Automated Testing](https://github.com/Huwelijksplanner/OverigeObjecten/actions/workflows/tests.yml/badge.svg)](https://github.com/Huwelijksplanner/OverigeObjecten/actions/workflows/tests.yml)
 

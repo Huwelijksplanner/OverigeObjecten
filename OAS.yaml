@@ -79,6 +79,74 @@ paths:
       responses:
         '200':
           description: OK
+  /accommodations:
+    get:
+      summary: GET Accommodations
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Accomodation'
+      operationId: get-accommodations
+    post:
+      summary: POST Accommodation
+      operationId: post-accommodations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Accomodation'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Accomodation'
+  '/accommodations/{id}':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Accomodation'
+      operationId: get-accommodations-id
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: PUT Accommodation
+      operationId: put-accommodations-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Accomodation'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Accomodation'
+    delete:
+      summary: DELETE Accommodation
+      operationId: delete-accommodations-id
+      responses:
+        '200':
+          description: OK
 components:
   schemas:
     Note:
@@ -485,3 +553,56 @@ components:
       required:
         - name
         - requester
+    Accomodation:
+      title: Accommodation
+      x-stoplight:
+        id: 3ffyg9hv13uj2
+      type: object
+      x-context: schema.org/Accommodation
+      description: A room or other accommodation that can facilitate people.
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          description: The name of this accommodation is displayed as a title to end users
+          maxLength: 255
+        description:
+          type: string
+          maxLength: 2550
+          description: The description of this accommodation is displayed to end users as additional information
+        accommodationCategory:
+          type: string
+          maxLength: 255
+          description: The category this accomodation falls into
+        floorSize:
+          type: string
+          maxLength: 255
+          description: The floor surface area of the accommodation
+        petsAllowed:
+          type: boolean
+          description: Answers the question if pets are allowed or not
+        wheelchairAccessible:
+          description: Answers the question if the accomodation is wheelchair accessible
+          type: boolean
+        numberOfBathroomsTotal:
+          type: integer
+          description: The number of available toilets at the accommodation
+        floorLevel:
+          type: integer
+          description: The floor level the accommodation is situated on
+        maximumAttendeeCapacity:
+          type: integer
+          description: The maximum number of attendees the accommodation can facilitate
+        product:
+          type: string
+          description: The product this accommodation is related to
+          maxLength: 255
+        place:
+          type: string
+          description: The location this accommodation belongs to
+        accommodationProperties:
+          type: string
+          description: accommodation properties
+      required:
+        - name

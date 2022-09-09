@@ -606,3 +606,55 @@ components:
           description: accommodation properties
       required:
         - name
+    XxllncZaakType:
+      title: XxllncZaakType
+      x-stoplight:
+        id: szp8saku6ims4
+      type: object
+      description: Xxllnc v1 casetype
+      properties:
+        id:
+          type: string
+        preview:
+          type: string
+        type:
+          type: string
+        reference:
+          type: string
+        instance:
+          type: object
+          properties:
+            offline:
+              type: boolean
+            properties:
+              type: array
+              items: {}
+            results:
+              type: array
+              items: {}
+            preset_client:
+              type: string
+            title:
+              type: string
+            public_url_path:
+              type: array
+              items: {}
+            subject_types:
+              type: array
+              items: {}
+            trigger:
+              type: string
+            settings:
+              type: array
+              items: {}
+            queue_coworker_changes:
+              type: boolean
+            sources:
+              type: array
+              items: {}
+            legacy:
+              type: array
+              items: {}
+            phases:
+              type: array
+              items: {}

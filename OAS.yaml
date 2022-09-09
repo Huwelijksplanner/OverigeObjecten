@@ -147,6 +147,20 @@ paths:
       responses:
         '200':
           description: OK
+  /casetypes:
+    get:
+      summary: GET casetypes
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/XxllncZaakType'
+      operationId: get-casetypes
 components:
   schemas:
     Note:

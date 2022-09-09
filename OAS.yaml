@@ -627,11 +627,97 @@ components:
             offline:
               type: boolean
             properties:
-              type: array
-              items: {}
+              type: object
+              properties:
+                penalty:
+                  type: string
+                supervisor_relation:
+                  type: string
+                extension:
+                  type: string
+                motivation:
+                  type: string
+                objection_and_appeal:
+                  type: string
+                e_formulier:
+                  type: string
+                designation_of_confidentiality:
+                  type: string
+                wkpb:
+                  type: string
+                text_for_publication:
+                  type: string
+                suspension:
+                  type: string
+                lead_time_legal:
+                  type: object
+                  properties:
+                    weken:
+                      type: string
+                goal:
+                  type: string
+                archive_classification_code:
+                  type: string
+                publication:
+                  type: string
+                lex_silencio_positivo:
+                  type: string
+                lead_time_service:
+                  type: object
+                  properties:
+                    weken:
+                      type: string
+                supervisor:
+                  type: string
+                principle_local:
+                  type: string
             results:
               type: array
-              items: {}
+              items:
+                type: object
+                properties:
+                  process_type_name:
+                    type: string
+                  process_type_explanation:
+                    type: string
+                  selection_list_number:
+                    type: integer
+                  resultaat_id:
+                    type: integer
+                  period_of_preservation:
+                    type: integer
+                  process_type_description:
+                    type: string
+                  type_of_archiving:
+                    type: string
+                  process_term:
+                    type: string
+                  selection_list:
+                    type: string
+                  archive_procedure:
+                    type: string
+                  type:
+                    type: string
+                  process_type_generic:
+                    type: string
+                  process_type_object:
+                    type: string
+                  external_reference:
+                    type: string
+                  origin:
+                    type: string
+                  type_of_dossier:
+                    type: string
+                  comments:
+                    type: string
+                  trigger_archival:
+                    type: boolean
+                  label:
+                    type: string
+                  standard_choice:
+                    type: boolean
+                  process_type_number:
+                    type: integer
             preset_client:
               type: string
             title:
@@ -645,16 +731,41 @@ components:
             trigger:
               type: string
             settings:
-              type: array
-              items: {}
+              type: object
+              properties:
+                contact_info_phone_required:
+                  type: boolean
+                intake_show_contact_info:
+                  type: boolean
+                online_payment:
+                  type: boolean
+                allow_assign_on_create:
+                  type: boolean
+                allow_reuse_previous_registration:
+                  type: boolean
+                offline_payment:
+                  type: boolean
+                allow_take_on_create:
+                  type: boolean
+                allow_subjects_on_create:
+                  type: boolean
+                contact_info_email_required:
+                  type: boolean
+                show_confidentiality_on_create:
+                  type: boolean
+                contact_info_mobile_phone_required:
+                  type: boolean
+                public_registration_form:
+                  type: boolean
             queue_coworker_changes:
               type: boolean
             sources:
               type: array
               items: {}
             legacy:
-              type: array
-              items: {}
-            phases:
-              type: array
-              items: {}
+              type: object
+              properties:
+                zaaktype_id:
+                  type: integer
+                zaaktype_node_id:
+                  type: integer

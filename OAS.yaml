@@ -685,6 +685,8 @@ components:
                   type: string
                 principle_local:
                   type: string
+                '':
+                  type: string
             results:
               type: array
               items:
@@ -783,3 +785,98 @@ components:
                   type: integer
                 zaaktype_node_id:
                   type: integer
+            phaces:
+              type: array
+              items:
+                type: object
+                properties:
+                  fields:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        multiple_values:
+                          type: boolean
+                        label_multiple:
+                          type: string
+                        values:
+                          type: array
+                          items:
+                            type: string
+                        type:
+                          type: string
+                        label:
+                          type: string
+                        required:
+                          type: boolean
+                        is_group:
+                          type: boolean
+                        help:
+                          type: string
+                        id:
+                          type: integer
+                        properties:
+                          type: object
+                        magic_string:
+                          type: string
+                        pip:
+                          type: boolean
+                        limit_values:
+                          type: integer
+                        original_label:
+                          type: string
+                        is_system:
+                          type: boolean
+                        catalogue_id:
+                          type: integer
+                        permissions:
+                          type: array
+                          items:
+                            type: string
+                        default_value:
+                          type: string
+                        referential:
+                          type: boolean
+                        publish_public:
+                          type: boolean
+                  route:
+                    type: object
+                    properties:
+                      role:
+                        type: object
+                        properties:
+                          reference:
+                            type: string
+                          type:
+                            type: string
+                          preview:
+                            type: string
+                          instance:
+                            type: object
+                            properties:
+                              date_created:
+                                type: string
+                              role_id:
+                                type: integer
+                              system_role:
+                                type: boolean
+                              name:
+                                type: string
+                              description:
+                                type: string
+                              date_modified:
+                                type: string
+                      set:
+                        type: boolean
+                      '':
+                        type: string
+                  seq:
+                    type: integer
+                  deadline:
+                    type: integer
+                  name:
+                    type: string
+                  locked:
+                    type: boolean
+                  id:
+                    type: integer

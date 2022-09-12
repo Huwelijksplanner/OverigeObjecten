@@ -785,7 +785,7 @@ components:
                   type: integer
                 zaaktype_node_id:
                   type: integer
-            phaces:
+            phases:
               type: array
               items:
                 type: object

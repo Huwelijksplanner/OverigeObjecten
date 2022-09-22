@@ -440,9 +440,9 @@ components:
           format: email
           description: URI Verwijzing naar de bij deze medewerk horende gebruiker
         contact:
+          x-context: schema.org/customer
           type: string
           description: 'Een verwijzing naar de contact gegeven van de medewerker in de [klanten API ](https://redocly.github.io/redoc/?nocors&url=https://kissdevelopment-dimpact.commonground.nu/openapi.json#tag/Klant-Klanten-collection/operation/klanten%20Klant_post)'
-          format: uri
         department:
           type: string
         function:

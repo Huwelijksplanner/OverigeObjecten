@@ -550,6 +550,9 @@ components:
           type: string
           description: The organisation (RSIN) or person (BSN) that is responsible for making this assent
           maxLength: 255
+        revocable:
+          type: boolean
+          default: true
       required:
         - name
         - requester
@@ -606,3 +609,120 @@ components:
           description: accommodation properties
       required:
         - name
+    SDG:
+      title: SDGProduct
+      x-stoplight:
+        id: g5xwvjqpq6rsj
+      type: object
+      properties:
+        uuid:
+          type: string
+        upnLabel:
+          type: string
+        upnUri:
+          type: string
+        versie:
+          type: string
+        publicatieDatum:
+          type: string
+        productAanwezig:
+          type: boolean
+        productValtOnder:
+          type: string
+        verantwoordelijkeOrganisatie:
+          $ref: '#/components/schemas/SDGLocatie'
+        bevoegdeOrganisatie:
+          $ref: '#/components/schemas/SDGLocatie'
+        catalogus:
+          type: string
+        locaties:
+          type: array
+          items: {}
+        doelgroep:
+          type: string
+        vertalingen:
+          type: array
+          items:
+            $ref: '#/components/schemas/SDGVertaling'
+        gerelateerdeProducten:
+          type: array
+          items:
+            $ref: '#/components/schemas/SDG'
+    SDGVertaling:
+      title: SDGVertaling
+      x-stoplight:
+        id: qiuvs12h4elow
+      type: object
+      properties:
+        taal:
+          type: string
+        productTitelDecentraal:
+          type: string
+        specifiekeTekst:
+          type: string
+        procedureBeschrijving:
+          type: string
+        kostenEnBetaalmethoden:
+          type: string
+        uitersteTermijn:
+          type: string
+        conditions:
+          type: string
+        bezwaarEnBeroep:
+          type: string
+        notice:
+          type: string
+        decentraleProcedureLink:
+          type: string
+        vereisten:
+          type: string
+        bewijs:
+          type: string
+        contact:
+          type: string
+        verwijzingLinks:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              url:
+                type: string
+                format: uri
+        synonyms:
+          type: array
+          items:
+            type: object
+            properties:
+              synonym:
+                type: string
+        wtdBijGeenReactie:
+          type: string
+        datumWijziging:
+          type: string
+          format: date-time
+        deskMemo:
+          type: string
+        productAanwezigToelichting:
+          type: string
+        productValtOnderToelichting:
+          type: string
+      description: ''
+    SDGLocatie:
+      title: SDGLocatie
+      x-stoplight:
+        id: w5oyec08nern0
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        owmsIdentifier:
+          type: string
+        owmsPrefLabel:
+          type: string
+        owmsEndDate:
+          type: string
+          format: date-time

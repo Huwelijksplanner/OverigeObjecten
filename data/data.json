@@ -1,6 +1,6 @@
 {
-  "openapi": "",
-  "collection": "",
+  "openapi": "3.0.0",
+  "collection": "https://raw.githubusercontent.com/Huwelijksplanner/OverigeObjecten/main/OAS.yaml",
   "schemas": {
     "SDG": [
       {

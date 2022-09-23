@@ -147,6 +147,138 @@ paths:
       responses:
         '200':
           description: OK
+  /sdg/api/v1/producten:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      operationId: get-sdg-api-v1-producten
+    post:
+      summary: ''
+      operationId: post-sdg-api-v1-producten
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SDG'
+  '/sdg/api/v1/producten/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      operationId: get-sdg-api-v1-producten-id
+    put:
+      summary: ''
+      operationId: put-sdg-api-v1-producten-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SDG'
+    delete:
+      summary: ''
+      operationId: delete-sdg-api-v1-producten-id
+      responses:
+        '200':
+          description: OK
+  /sdg/kennisartikel:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      operationId: get-sdg-kennisartikel
+    post:
+      summary: ''
+      operationId: post-sdg-kennisartikel
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SDG'
+  '/sdg/kennisartikel/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      operationId: get-sdg-kennisartikel-id
+    put:
+      summary: ''
+      operationId: put-sdg-kennisartikel-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SDG'
+    delete:
+      summary: ''
+      operationId: delete-sdg-kennisartikel-id
+      responses:
+        '200':
+          description: OK
 components:
   schemas:
     Note:

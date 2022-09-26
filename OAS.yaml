@@ -1126,6 +1126,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SDG'
+      x-context: schema.conduction.nl/SDGProduct
     SDGVertaling:
       title: SDGVertaling
       x-stoplight:

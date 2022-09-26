@@ -504,7 +504,7 @@ paths:
           description: OK
   /sdg/api/v1/producten:
     get:
-      summary: Your GET endpoint
+      summary: GET SDG Producten endpoint
       tags: []
       responses:
         '200':
@@ -515,7 +515,7 @@ paths:
                 $ref: '#/components/schemas/SDG'
       operationId: get-sdg-api-v1-producten
     post:
-      summary: GET SDG Producten endpoint
+      summary: POST SDG Product endpoint
       operationId: post-sdg-api-v1-producten
       responses:
         '200':
@@ -548,7 +548,7 @@ paths:
                 $ref: '#/components/schemas/SDG'
       operationId: get-sdg-api-v1-producten-id
     put:
-      summary: ''
+      summary: PUT SDG Product item endpoint
       operationId: put-sdg-api-v1-producten-id
       responses:
         '200':
@@ -563,14 +563,14 @@ paths:
             schema:
               $ref: '#/components/schemas/SDG'
     delete:
-      summary: ''
+      summary: DELETE SDG Product item endpoint
       operationId: delete-sdg-api-v1-producten-id
       responses:
         '200':
           description: OK
   /sdg/kennisartikel:
     get:
-      summary: GET SDG Kennisartikel endpoint
+      summary: GET SDG Kennisartikel collection endpoint
       tags: []
       responses:
         '200':
@@ -581,7 +581,7 @@ paths:
                 $ref: '#/components/schemas/SDG'
       operationId: get-sdg-kennisartikel
     post:
-      summary: ''
+      summary: POST SDG Kennisartikel collection endpoint
       operationId: post-sdg-kennisartikel
       responses:
         '200':
@@ -614,8 +614,14 @@ paths:
                 $ref: '#/components/schemas/SDG'
       operationId: get-sdg-kennisartikel-id
     put:
-      summary: ''
+      summary: PUT SDG Kennisartikel item endpoint
       operationId: put-sdg-kennisartikel-id
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: DELETE SDG Kennisartikel item endpoint
+      operationId: delete-sdg-kennisartikel-id
       responses:
         '200':
           description: OK
@@ -913,8 +919,8 @@ components:
           description: URI Verwijzing naar de bij deze medewerk horende gebruiker
         contact:
           x-context: schema.org/customer
-          type: string
           description: 'Een verwijzing naar de contact gegeven van de medewerker in de [klanten API ](https://redocly.github.io/redoc/?nocors&url=https://kissdevelopment-dimpact.commonground.nu/openapi.json#tag/Klant-Klanten-collection/operation/klanten%20Klant_post)'
+          type: string
         department:
           type: string
         function:

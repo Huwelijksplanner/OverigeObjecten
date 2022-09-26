@@ -11,6 +11,361 @@ info:
     url: www.conduction.nl
     email: ruben@conduction.nl
 paths:
+  /notes:
+    get:
+      summary: GET Notes
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Note'
+      operationId: get-assents
+    post:
+      summary: POST Note
+      operationId: post-assents
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Note'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Note'
+    parameters: []
+  '/notes/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: GET Note
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Note'
+      operationId: get-assents-id
+    put:
+      summary: PUT Note
+      operationId: put-assents-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Note'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Note'
+    delete:
+      summary: DELETE Note
+      operationId: delete-assents-id
+      responses:
+        '200':
+          description: OK
+      description: ''
+  /reviews:
+    get:
+      summary: GET Reviews
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Review'
+      operationId: get-assents
+    post:
+      summary: POST Review
+      operationId: post-assents
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+      description: ''
+    parameters: []
+  '/reviews/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: GET Review
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+      operationId: get-assents-id
+    put:
+      summary: PUT Review
+      operationId: put-assents-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+    delete:
+      summary: DELETE Review
+      operationId: delete-assents-id
+      responses:
+        '200':
+          description: OK
+      description: ''
+  /searches:
+    get:
+      summary: GET Searches
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Search'
+      operationId: get-assents
+    post:
+      summary: POST Search
+      operationId: post-assents
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Search'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Search'
+      description: ''
+    parameters: []
+  '/searches/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: GET Search
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Search'
+      operationId: get-assents-id
+    put:
+      summary: PUT Search
+      operationId: put-assents-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Search'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Search'
+    delete:
+      summary: DELETE Search
+      operationId: delete-assents-id
+      responses:
+        '200':
+          description: OK
+      description: ''
+  /taxanomies:
+    get:
+      summary: GET Taxanomies
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Taxanomy'
+      operationId: get-assents
+    post:
+      summary: POST Taxanomy
+      operationId: post-assents
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Taxanomy'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Taxanomy'
+      description: ''
+    parameters: []
+  '/taxanomies/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: GET Taxanomy
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Taxanomy'
+      operationId: get-assents-id
+    put:
+      summary: PUT Taxanomy
+      operationId: put-assents-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Taxanomy'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Taxanomy'
+    delete:
+      summary: DELETE Taxanomy
+      operationId: delete-assents-id
+      responses:
+        '200':
+          description: OK
+      description: ''
+  /medewerkers:
+    get:
+      summary: GET Medewerkers
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Medewerker'
+      operationId: get-assents
+      description: ''
+    post:
+      summary: POST Medewerker
+      operationId: post-assents
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Medewerker'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Medewerker'
+      description: ''
+    parameters: []
+  '/medewerkers/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: GET Medewerker
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Medewerker'
+      operationId: get-assents-id
+    put:
+      summary: PUT Medewerker
+      operationId: put-assents-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Medewerker'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Medewerker'
+    delete:
+      summary: DELETE Medewerker
+      operationId: delete-assents-id
+      responses:
+        '200':
+          description: OK
+      description: ''
   /assents:
     get:
       summary: GET Assents
@@ -574,7 +929,7 @@ components:
           description: 'Verwijzing naar een andere [medewerker](https://redocly.github.io/redoc/?nocors&url=https://kissdevelopment-dimpact.commonground.nu/openapi.json#tag/MedewerkerOverige-objecten/operation/medewerkers%20Medewerker_post) die deze medewerker vervangt indien niet aanwezig/onbechickbaar'
           format: uri
         skills:
-          description: An array of skills associated with this employee (used as starting values for search indexes, note that this field is actually a string!)
+          description: 'An array of skills associated with this employee (used as starting values for search indexes, note that this field is actually a string!)'
           type: string
         description:
           type: string

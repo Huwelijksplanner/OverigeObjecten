@@ -574,7 +574,7 @@ components:
           description: 'Verwijzing naar een andere [medewerker](https://redocly.github.io/redoc/?nocors&url=https://kissdevelopment-dimpact.commonground.nu/openapi.json#tag/MedewerkerOverige-objecten/operation/medewerkers%20Medewerker_post) die deze medewerker vervangt indien niet aanwezig/onbechickbaar'
           format: uri
         skills:
-          description: An array of skills associated with this employee (used as starting values for search indexes)
+          description: An array of skills associated with this employee (used as starting values for search indexes, note that this field is actually a string!)
           type: string
         description:
           type: string

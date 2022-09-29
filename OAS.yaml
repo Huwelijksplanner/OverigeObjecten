@@ -613,6 +613,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/SDG'
       operationId: get-sdg-kennisartikel-id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SDG'
     put:
       summary: PUT SDG Kennisartikel item endpoint
       operationId: put-sdg-kennisartikel-id

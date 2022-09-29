@@ -624,6 +624,15 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SDG'
     delete:
       summary: DELETE SDG Kennisartikel item endpoint
       operationId: delete-sdg-kennisartikel-id

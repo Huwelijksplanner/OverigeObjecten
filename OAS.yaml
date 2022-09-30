@@ -1023,6 +1023,7 @@ components:
           type: string
           description: The contact that this assent applies to
           maxLength: 255
+          x-context: schema.org/customer
         person:
           type: string
           maxLength: 255

@@ -17,7 +17,9 @@
                "status":"requested",
                "requester":"019655344",
                "revocable":true
-            },
+            }
+         },
+         {
             "properties":{
                "id":"string",
                "token":"string",
@@ -31,7 +33,9 @@
                "person":null,
                "requester":"019655344",
                "revocable":true
-            },
+            }
+         },
+         {
             "properties":{
                "token":"string",
                "name":"Instemmings gemeente",

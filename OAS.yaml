@@ -1007,7 +1007,7 @@ components:
           type: string
           maxLength: 255
           description: The request that this assent applies to
-        forwardUrl;:
+        forwardUrl:
           type: string
           description: The request that this assent applies to
           maxLength: 255

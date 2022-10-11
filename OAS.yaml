@@ -1028,6 +1028,7 @@ components:
           type: string
           maxLength: 255
           description: The person that this assent applies to
+          x-context: schema.org/customer
         status:
           type: string
           maxLength: 255

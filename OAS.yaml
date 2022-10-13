@@ -94,10 +94,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Review'
-      operationId: get-assents
+      operationId: get-reviews
     post:
       summary: POST Review
-      operationId: post-assents
+      operationId: post-reviews
       responses:
         '200':
           description: OK
@@ -129,10 +129,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Review'
-      operationId: get-assents-id
+      operationId: get-reviews-id
     put:
       summary: PUT Review
-      operationId: put-assents-id
+      operationId: put-reviews-id
       responses:
         '200':
           description: OK
@@ -147,7 +147,7 @@ paths:
               $ref: '#/components/schemas/Review'
     delete:
       summary: DELETE Review
-      operationId: delete-assents-id
+      operationId: delete-reviews-id
       responses:
         '200':
           description: OK
@@ -165,10 +165,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Search'
-      operationId: get-assents
+      operationId: get-searches
     post:
       summary: POST Search
-      operationId: post-assents
+      operationId: post-searches
       responses:
         '200':
           description: OK
@@ -200,10 +200,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Search'
-      operationId: get-assents-id
+      operationId: get-searches-id
     put:
       summary: PUT Search
-      operationId: put-assents-id
+      operationId: put-searches-id
       responses:
         '200':
           description: OK
@@ -218,7 +218,7 @@ paths:
               $ref: '#/components/schemas/Search'
     delete:
       summary: DELETE Search
-      operationId: delete-assents-id
+      operationId: delete-searches-id
       responses:
         '200':
           description: OK
@@ -236,10 +236,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Taxanomy'
-      operationId: get-assents
+      operationId: get-taxonomy
     post:
       summary: POST Taxanomy
-      operationId: post-assents
+      operationId: post-taxonomy
       responses:
         '200':
           description: OK
@@ -271,10 +271,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Taxanomy'
-      operationId: get-assents-id
+      operationId: get-taxonomy-id
     put:
       summary: PUT Taxanomy
-      operationId: put-assents-id
+      operationId: put-taxonomy-id
       responses:
         '200':
           description: OK
@@ -289,7 +289,7 @@ paths:
               $ref: '#/components/schemas/Taxanomy'
     delete:
       summary: DELETE Taxanomy
-      operationId: delete-assents-id
+      operationId: delete-taxonomy-id
       responses:
         '200':
           description: OK
@@ -307,11 +307,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Medewerker'
-      operationId: get-assents
+      operationId: get-medewerkers
       description: ''
     post:
       summary: POST Medewerker
-      operationId: post-assents
+      operationId: post-medewerkers
       responses:
         '200':
           description: OK
@@ -343,10 +343,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Medewerker'
-      operationId: get-assents-id
+      operationId: get-medewerkers-id
     put:
       summary: PUT Medewerker
-      operationId: put-assents-id
+      operationId: put-medewerkers-id
       responses:
         '200':
           description: OK
@@ -361,7 +361,7 @@ paths:
               $ref: '#/components/schemas/Medewerker'
     delete:
       summary: DELETE Medewerker
-      operationId: delete-assents-id
+      operationId: delete-medewerkers-id
       responses:
         '200':
           description: OK

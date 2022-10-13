@@ -24,10 +24,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Note'
-      operationId: get-assents
+      operationId: get-notes
     post:
       summary: POST Note
-      operationId: post-assents
+      operationId: post-notes
       responses:
         '200':
           description: OK
@@ -58,10 +58,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Note'
-      operationId: get-assents-id
+      operationId: get-notes-id
     put:
       summary: PUT Note
-      operationId: put-assents-id
+      operationId: put-notes-id
       responses:
         '200':
           description: OK
@@ -76,7 +76,7 @@ paths:
               $ref: '#/components/schemas/Note'
     delete:
       summary: DELETE Note
-      operationId: delete-assents-id
+      operationId: delete-notes-id
       responses:
         '200':
           description: OK

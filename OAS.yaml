@@ -5,7 +5,7 @@ info:
   title: Overige Objecten
   version: V1.0
   description: |
-    Het Memo Component biedt de generieke mogelijkheid om gebruikers memo’s (notities) te laten aanmaken of resources (bijvoorbeeld Common Ground resources). Deze functionaliteit is bewust abstract opgezet. In wezen kan elke gebruiker over alles een memo aanmaken. Dat biedt ook de mogelijkheid om voor elke willekeurige resource het component te bevragen en te zien of er memo’s voor staan. Memo’s worden in principe gezien als organisatie-intern en zijn nadrukkelijk geen communicatiekanaal met de klant, daarvoor zijn ‘contactmomenten’ beschikbaar.         
+    Het Memo Component biedt de generieke mogelijkheid om gebruikers memo’s (notities) te laten aanmaken of resources (bijvoorbeeld Common Ground resources). Deze functionaliteit is bewust abstract opgezet. In wezen kan elke gebruiker over alles een memo aanmaken. Dat biedt ook de mogelijkheid om voor elke willekeurige resource het component te bevragen en te zien of er memo’s voor staan. Memo’s worden in principe gezien als organisatie-intern en zijn nadrukkelijk geen communicatiekanaal met de klant, daarvoor zijn ‘contactmomenten’ beschikbaar.
   contact:
     name: Ruben van der LInde
     url: www.conduction.nl
@@ -539,10 +539,10 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/SDG'
-      operationId: get-sdg-api-v1-producten
+      operationId: get-producten
     post:
       summary: POST SDG Product endpoint
-      operationId: post-sdg-api-v1-producten
+      operationId: post-producten
       responses:
         '200':
           description: OK
@@ -572,10 +572,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SDG'
-      operationId: get-sdg-api-v1-producten-id
+      operationId: get-producten-id
     put:
       summary: PUT SDG Product item endpoint
-      operationId: put-sdg-api-v1-producten-id
+      operationId: put-producten-id
       responses:
         '200':
           description: OK
@@ -590,7 +590,7 @@ paths:
               $ref: '#/components/schemas/SDG'
     delete:
       summary: DELETE SDG Product item endpoint
-      operationId: delete-sdg-api-v1-producten-id
+      operationId: delete-producten-id
       responses:
         '200':
           description: OK
@@ -677,7 +677,7 @@ components:
       description: |-
         Based on  [NoteDigitalDocument](https://schema.org/NoteDigitalDocument)  
 
-        Biedt de generieke mogelijkheid om gebruikers notities te laten aanmaken of resources (bijvoorbeeld Common Ground resources). Deze functionaliteit is bewust abstract opgezet. In wezen kan elke gebruiker over alles een memo aanmaken. Dat biedt ook de mogelijkheid om voor elke willekeurige resource het component te bevragen en te zien of er memo’s voor staan. Memo’s worden in principe gezien als organisatie-intern en zijn nadrukkelijk geen communicatiekanaal met de klant, daarvoor zijn ‘contactmomenten’ beschikbaar.      
+        Biedt de generieke mogelijkheid om gebruikers notities te laten aanmaken of resources (bijvoorbeeld Common Ground resources). Deze functionaliteit is bewust abstract opgezet. In wezen kan elke gebruiker over alles een memo aanmaken. Dat biedt ook de mogelijkheid om voor elke willekeurige resource het component te bevragen en te zien of er memo’s voor staan. Memo’s worden in principe gezien als organisatie-intern en zijn nadrukkelijk geen communicatiekanaal met de klant, daarvoor zijn ‘contactmomenten’ beschikbaar.
       title: Note
       properties:
         id:

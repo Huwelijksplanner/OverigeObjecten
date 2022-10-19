@@ -1,0 +1,7 @@
+{
+  "name": "@conductionnl/overige-objecten-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OpenAPI Specification voor de Overige Objecten Service",
+  "author": "Conduction B.V."
+}

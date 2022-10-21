@@ -1,0 +1,280 @@
+openapi: 3.0.2
+x-stoplight:
+  id: ksp3mtt3rgbyf
+info:
+  title: Overige Objecten
+  version: V1.0
+  description: |
+    Het Memo Component biedt de generieke mogelijkheid om gebruikers memo’s (notities) te laten aanmaken of resources (bijvoorbeeld Common Ground resources). Deze functionaliteit is bewust abstract opgezet. In wezen kan elke gebruiker over alles een memo aanmaken. Dat biedt ook de mogelijkheid om voor elke willekeurige resource het component te bevragen en te zien of er memo’s voor staan. Memo’s worden in principe gezien als organisatie-intern en zijn nadrukkelijk geen communicatiekanaal met de klant, daarvoor zijn ‘contactmomenten’ beschikbaar.         
+  contact:
+    name: Ruben van der LInde
+    url: www.conduction.nl
+    email: ruben@conduction.nl
+paths:
+  /sdg/api/v1/producten:
+    get:
+      summary: GET SDG Producten endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SDG'
+      operationId: get-producten
+    post:
+      summary: POST SDG Product endpoint
+      operationId: post-producten
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SDG'
+  '/sdg/api/v1/producten/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: GET SDG Product item endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      operationId: get-producten-id
+    put:
+      summary: PUT SDG Product item endpoint
+      operationId: put-producten-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SDG'
+    delete:
+      summary: DELETE SDG Product item endpoint
+      operationId: delete-producten-id
+      responses:
+        '200':
+          description: OK
+  /sdg/kennisartikel:
+    get:
+      summary: GET SDG Kennisartikel collection endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SDG'
+      operationId: get-sdg-kennisartikel
+    post:
+      summary: POST SDG Kennisartikel collection endpoint
+      operationId: post-sdg-kennisartikel
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SDG'
+  '/sdg/kennisartikel/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: GET SDG Kennisartikel item endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      operationId: get-sdg-kennisartikel-id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SDG'
+    put:
+      summary: PUT SDG Kennisartikel item endpoint
+      operationId: put-sdg-kennisartikel-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SDG'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SDG'
+    delete:
+      summary: DELETE SDG Kennisartikel item endpoint
+      operationId: delete-sdg-kennisartikel-id
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    SDG:
+      title: SDGProduct
+      x-stoplight:
+        id: g5xwvjqpq6rsj
+      type: object
+      properties:
+        uuid:
+          type: string
+        upnLabel:
+          type: string
+        upnUri:
+          type: string
+        versie:
+          type: string
+        publicatieDatum:
+          type: string
+        productAanwezig:
+          type: boolean
+        productValtOnder:
+          type: string
+        verantwoordelijkeOrganisatie:
+          $ref: '#/components/schemas/SDGLocatie'
+        bevoegdeOrganisatie:
+          $ref: '#/components/schemas/SDGLocatie'
+        catalogus:
+          type: string
+        locaties:
+          type: array
+          items: {}
+        doelgroep:
+          type: string
+        vertalingen:
+          type: array
+          items:
+            $ref: '#/components/schemas/SDGVertaling'
+        gerelateerdeProducten:
+          type: array
+          items:
+            $ref: '#/components/schemas/SDG'
+      x-context: schema.conduction.nl/SDGProduct
+    SDGVertaling:
+      title: SDGVertaling
+      x-stoplight:
+        id: qiuvs12h4elow
+      type: object
+      properties:
+        taal:
+          type: string
+        productTitelDecentraal:
+          type: string
+        specifiekeTekst:
+          type: string
+        procedureBeschrijving:
+          type: string
+        kostenEnBetaalmethoden:
+          type: string
+        uitersteTermijn:
+          type: string
+        conditions:
+          type: string
+        bezwaarEnBeroep:
+          type: string
+        notice:
+          type: string
+        decentraleProcedureLink:
+          type: string
+        vereisten:
+          type: string
+        bewijs:
+          type: string
+        contact:
+          type: string
+        verwijzingLinks:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              url:
+                type: string
+                format: uri
+        synonyms:
+          type: array
+          items:
+            type: object
+            properties:
+              synonym:
+                type: string
+        wtdBijGeenReactie:
+          type: string
+        datumWijziging:
+          type: string
+          format: date-time
+        deskMemo:
+          type: string
+        productAanwezigToelichting:
+          type: string
+        productValtOnderToelichting:
+          type: string
+      description: ''
+    SDGLocatie:
+      title: SDGLocatie
+      x-stoplight:
+        id: w5oyec08nern0
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        owmsIdentifier:
+          type: string
+        owmsPrefLabel:
+          type: string
+        owmsEndDate:
+          type: string
+          format: date-time

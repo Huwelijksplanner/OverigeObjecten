@@ -21,9 +21,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Note'
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Note'
       operationId: get-notes
     post:
       summary: POST Note
@@ -91,13 +94,16 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Review'
-      operationId: get-assents
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Review'
+      operationId: get-reviews
     post:
       summary: POST Review
-      operationId: post-assents
+      operationId: post-reviews
       responses:
         '200':
           description: OK
@@ -129,10 +135,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Review'
-      operationId: get-assents-id
+      operationId: get-reviews-id
     put:
       summary: PUT Review
-      operationId: put-assents-id
+      operationId: put-reviews-id
       responses:
         '200':
           description: OK
@@ -147,7 +153,7 @@ paths:
               $ref: '#/components/schemas/Review'
     delete:
       summary: DELETE Review
-      operationId: delete-assents-id
+      operationId: delete-reviews-id
       responses:
         '200':
           description: OK
@@ -162,13 +168,16 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Search'
-      operationId: get-assents
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Search'
+      operationId: get-searches
     post:
       summary: POST Search
-      operationId: post-assents
+      operationId: post-searches
       responses:
         '200':
           description: OK
@@ -200,10 +209,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Search'
-      operationId: get-assents-id
+      operationId: get-searches-id
     put:
       summary: PUT Search
-      operationId: put-assents-id
+      operationId: put-searches-id
       responses:
         '200':
           description: OK
@@ -218,7 +227,7 @@ paths:
               $ref: '#/components/schemas/Search'
     delete:
       summary: DELETE Search
-      operationId: delete-assents-id
+      operationId: delete-searches-id
       responses:
         '200':
           description: OK
@@ -233,13 +242,16 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Taxanomy'
-      operationId: get-assents
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Taxanomy'
+      operationId: get-taxanomies
     post:
       summary: POST Taxanomy
-      operationId: post-assents
+      operationId: post-taxanomies
       responses:
         '200':
           description: OK
@@ -271,10 +283,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Taxanomy'
-      operationId: get-assents-id
+      operationId: get-taxanomies-id
     put:
       summary: PUT Taxanomy
-      operationId: put-assents-id
+      operationId: put-taxanomies-id
       responses:
         '200':
           description: OK
@@ -289,7 +301,7 @@ paths:
               $ref: '#/components/schemas/Taxanomy'
     delete:
       summary: DELETE Taxanomy
-      operationId: delete-assents-id
+      operationId: delete-taxanomies-id
       responses:
         '200':
           description: OK
@@ -304,14 +316,17 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Medewerker'
-      operationId: get-assents
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Medewerker'
+      operationId: get-medewerkers
       description: ''
     post:
       summary: POST Medewerker
-      operationId: post-assents
+      operationId: post-medewerkers
       responses:
         '200':
           description: OK
@@ -343,10 +358,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Medewerker'
-      operationId: get-assents-id
+      operationId: get-medewerkers-id
     put:
       summary: PUT Medewerker
-      operationId: put-assents-id
+      operationId: put-medewerkers-id
       responses:
         '200':
           description: OK
@@ -361,7 +376,7 @@ paths:
               $ref: '#/components/schemas/Medewerker'
     delete:
       summary: DELETE Medewerker
-      operationId: delete-assents-id
+      operationId: delete-medewerkers-id
       responses:
         '200':
           description: OK
@@ -376,9 +391,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Assent'
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Assent'
       operationId: get-assents
     post:
       summary: POST Assent
@@ -444,9 +462,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Accomodation'
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Accomodation'
       operationId: get-accommodations
     post:
       summary: POST Accommodation
@@ -512,11 +533,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SDG'
-      operationId: get-sdg-api-v1-producten
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SDG'
+      operationId: get-producten
     post:
       summary: POST SDG Product endpoint
-      operationId: post-sdg-api-v1-producten
+      operationId: post-producten
       responses:
         '200':
           description: OK
@@ -546,10 +572,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SDG'
-      operationId: get-sdg-api-v1-producten-id
+      operationId: get-producten-id
     put:
       summary: PUT SDG Product item endpoint
-      operationId: put-sdg-api-v1-producten-id
+      operationId: put-producten-id
       responses:
         '200':
           description: OK
@@ -564,7 +590,7 @@ paths:
               $ref: '#/components/schemas/SDG'
     delete:
       summary: DELETE SDG Product item endpoint
-      operationId: delete-sdg-api-v1-producten-id
+      operationId: delete-producten-id
       responses:
         '200':
           description: OK
@@ -578,7 +604,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SDG'
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SDG'
       operationId: get-sdg-kennisartikel
     post:
       summary: POST SDG Kennisartikel collection endpoint
@@ -639,6 +670,80 @@ paths:
       responses:
         '200':
           description: OK
+  /kiss/links:
+    get:
+      summary: GET Links
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Link'
+      operationId: get-links
+    post:
+      summary: POST Link
+      operationId: post-links
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Link'
+    parameters: []
+  '/kiss/links/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: GET Link
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+      operationId: get-links-id
+    put:
+      summary: PUT Note
+      operationId: put-links-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Link'
+      description: ''
+    delete:
+      summary: DELETE Note
+      operationId: delete-links-id
+      responses:
+        '200':
+          description: OK
+      description: ''
 components:
   schemas:
     Note:
@@ -1221,3 +1326,37 @@ components:
         owmsEndDate:
           type: string
           format: date-time
+    Link:
+      type: object
+      description: ''
+      title: Link
+      properties:
+        id:
+          description: The UUID identifier of this object
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+          readOnly: true
+        category:
+          description: Name of the memo
+          type: string
+        title:
+          description: Name of the memo
+          type: string
+        url:
+          type: string
+          description: Name of the memo
+          format: uri
+        dateCreated:
+          description: The moment this resource was created
+          type: string
+          format: date-time
+        dateModified:
+          description: The moment this resource last Modified
+          type: string
+          format: date-time
+      required:
+        - category
+        - title
+        - url

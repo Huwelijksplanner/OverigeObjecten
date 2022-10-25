@@ -1215,6 +1215,8 @@ components:
       type: object
       x-context: schema.conduction.nl/SDGProduct
       properties:
+        url:
+          type: string
         uuid:
           type: string
         upnLabel:

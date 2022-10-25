@@ -1213,6 +1213,7 @@ components:
       x-stoplight:
         id: g5xwvjqpq6rsj
       type: object
+      x-context: schema.conduction.nl/SDGProduct
       properties:
         uuid:
           type: string
@@ -1221,7 +1222,7 @@ components:
         upnUri:
           type: string
         versie:
-          type: string
+          type: integer
         publicatieDatum:
           type: string
         productAanwezig:
@@ -1247,7 +1248,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SDG'
-      x-context: schema.conduction.nl/SDGProduct
     SDGVertaling:
       title: SDGVertaling
       x-stoplight:

@@ -1045,10 +1045,27 @@ components:
         function:
           type: string
           description: De funtie titel die door deze medewerker word bekleed
-        calendar:
-          type: string
+        availabilities:
+          type: array
           description: 'Verwijzing naar de [agenda](https://redocly.github.io/redoc/?nocors&url=https://kissdevelopment-dimpact.commonground.nu/openapi.json#tag/Calendar-AgendaService-collection/operation/calendars%20Calendar_post) van deze medwerker waar de availabiliy en tasks kunnen worden opgehaald. '
           format: uri
+          items:
+            type: object
+            properties:
+              maandag:
+                $ref: '#/components/schemas/MedewerkerAvailability'
+              dinsdag:
+                $ref: '#/components/schemas/MedewerkerAvailability'
+              woensdag:
+                $ref: '#/components/schemas/MedewerkerAvailability'
+              donderdag:
+                $ref: '#/components/schemas/MedewerkerAvailability'
+              vrijdag:
+                $ref: '#/components/schemas/MedewerkerAvailability'
+              zaterdag:
+                $ref: '#/components/schemas/MedewerkerAvailability'
+              zondag:
+                $ref: '#/components/schemas/MedewerkerAvailability'
         replacement:
           type: string
           description: 'Verwijzing naar een andere [medewerker](https://redocly.github.io/redoc/?nocors&url=https://kissdevelopment-dimpact.commonground.nu/openapi.json#tag/MedewerkerOverige-objecten/operation/medewerkers%20Medewerker_post) die deze medewerker vervangt indien niet aanwezig/onbechickbaar'
@@ -1058,6 +1075,19 @@ components:
           type: string
         description:
           type: string
+    MedewerkerAvailability:
+      title: MedewerkerAvailability
+      type: object
+      description: Een availability van een medewerker
+      x-stoplight:
+        id: c287b6fa27599
+      properties:
+        ochtend:
+          type: boolean
+        middag:
+          type: boolean
+        avond:
+          type: boolean
     Instemming:
       title: Claim
       x-stoplight:

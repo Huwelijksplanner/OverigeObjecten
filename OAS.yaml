@@ -1073,10 +1073,6 @@ components:
           $ref: '#/components/schemas/MedewerkerAvailability'
         vrijdag:
           $ref: '#/components/schemas/MedewerkerAvailability'
-        zaterdag:
-          $ref: '#/components/schemas/MedewerkerAvailability'
-        zondag:
-          $ref: '#/components/schemas/MedewerkerAvailability'
     MedewerkerAvailability:
       title: MedewerkerAvailability
       type: object
@@ -1087,8 +1083,6 @@ components:
         ochtend:
           type: boolean
         middag:
-          type: boolean
-        avond:
           type: boolean
     Instemming:
       title: Claim

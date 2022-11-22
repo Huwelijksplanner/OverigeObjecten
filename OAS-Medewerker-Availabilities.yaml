@@ -1,0 +1,52 @@
+openapi: 3.0.2
+x-stoplight:
+  id: k8yrwqpjfzmvx
+info:
+  title: Overige Objecten
+  version: V1.0
+  description: |
+    Het Memo Component biedt de generieke mogelijkheid om gebruikers memo’s (notities) te laten aanmaken of resources (bijvoorbeeld Common Ground resources). Deze functionaliteit is bewust abstract opgezet. In wezen kan elke gebruiker over alles een memo aanmaken. Dat biedt ook de mogelijkheid om voor elke willekeurige resource het component te bevragen en te zien of er memo’s voor staan. Memo’s worden in principe gezien als organisatie-intern en zijn nadrukkelijk geen communicatiekanaal met de klant, daarvoor zijn ‘contactmomenten’ beschikbaar.         
+  contact:
+    name: Ruben van der LInde
+    url: www.conduction.nl
+    email: ruben@conduction.nl
+paths: {}
+components:
+  schemas:
+    MedewerkerAvailabilities:
+      title: MedewerkerAvailabilities
+      type: object
+      description: 'Dit ORC medewerker object vang kiss specifieke wensen af. Let op het is verstandig de medewerker op te halen met ?extend[]=contact&extend[]=calendar zodat de contact en agenda gegevens meteen mee komen. '
+      x-stoplight:
+        id: c287b6fa27599
+      properties:
+        maandag:
+          $ref: '#/components/schemas/MedewerkerAvailability'
+        dinsdag:
+          $ref: '#/components/schemas/MedewerkerAvailability'
+        woensdag:
+          $ref: '#/components/schemas/MedewerkerAvailability'
+        donderdag:
+          $ref: '#/components/schemas/MedewerkerAvailability'
+        vrijdag:
+          $ref: '#/components/schemas/MedewerkerAvailability'
+      required:
+        - maandag
+        - dinsdag
+        - woensdag
+        - donderdag
+        - vrijdag
+    MedewerkerAvailability:
+      title: MedewerkerAvailability
+      type: object
+      description: Een availability van een medewerker
+      x-stoplight:
+        id: c287b6fa27599
+      properties:
+        ochtend:
+          type: boolean
+        middag:
+          type: boolean
+      required:
+        - ochtend
+        - middag

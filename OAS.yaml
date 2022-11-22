@@ -1073,6 +1073,12 @@ components:
           $ref: '#/components/schemas/MedewerkerAvailability'
         vrijdag:
           $ref: '#/components/schemas/MedewerkerAvailability'
+      required:
+        - maandag
+        - dinsdag
+        - woensdag
+        - donderdag
+        - vrijdag
     MedewerkerAvailability:
       title: MedewerkerAvailability
       type: object
@@ -1084,6 +1090,9 @@ components:
           type: boolean
         middag:
           type: boolean
+      required:
+        - ochtend
+        - middag
     Instemming:
       title: Claim
       x-stoplight:

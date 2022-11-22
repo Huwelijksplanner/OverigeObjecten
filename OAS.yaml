@@ -1046,26 +1046,7 @@ components:
           type: string
           description: De funtie titel die door deze medewerker word bekleed
         availabilities:
-          type: array
-          description: 'Verwijzing naar de [agenda](https://redocly.github.io/redoc/?nocors&url=https://kissdevelopment-dimpact.commonground.nu/openapi.json#tag/Calendar-AgendaService-collection/operation/calendars%20Calendar_post) van deze medwerker waar de availabiliy en tasks kunnen worden opgehaald. '
-          format: uri
-          items:
-            type: object
-            properties:
-              maandag:
-                $ref: '#/components/schemas/MedewerkerAvailability'
-              dinsdag:
-                $ref: '#/components/schemas/MedewerkerAvailability'
-              woensdag:
-                $ref: '#/components/schemas/MedewerkerAvailability'
-              donderdag:
-                $ref: '#/components/schemas/MedewerkerAvailability'
-              vrijdag:
-                $ref: '#/components/schemas/MedewerkerAvailability'
-              zaterdag:
-                $ref: '#/components/schemas/MedewerkerAvailability'
-              zondag:
-                $ref: '#/components/schemas/MedewerkerAvailability'
+          $ref: '#/components/schemas/MedewerkerAvailabilities'
         replacement:
           type: string
           description: 'Verwijzing naar een andere [medewerker](https://redocly.github.io/redoc/?nocors&url=https://kissdevelopment-dimpact.commonground.nu/openapi.json#tag/MedewerkerOverige-objecten/operation/medewerkers%20Medewerker_post) die deze medewerker vervangt indien niet aanwezig/onbechickbaar'
@@ -1075,6 +1056,27 @@ components:
           type: string
         description:
           type: string
+    MedewerkerAvailabilities:
+      title: MedewerkerAvailabilities
+      type: object
+      description: 'Dit ORC medewerker object vang kiss specifieke wensen af. Let op het is verstandig de medewerker op te halen met ?extend[]=contact&extend[]=calendar zodat de contact en agenda gegevens meteen mee komen. '
+      x-stoplight:
+        id: c287b6fa27599
+      properties:
+        maandag:
+          $ref: '#/components/schemas/MedewerkerAvailability'
+        dinsdag:
+          $ref: '#/components/schemas/MedewerkerAvailability'
+        woensdag:
+          $ref: '#/components/schemas/MedewerkerAvailability'
+        donderdag:
+          $ref: '#/components/schemas/MedewerkerAvailability'
+        vrijdag:
+          $ref: '#/components/schemas/MedewerkerAvailability'
+        zaterdag:
+          $ref: '#/components/schemas/MedewerkerAvailability'
+        zondag:
+          $ref: '#/components/schemas/MedewerkerAvailability'
     MedewerkerAvailability:
       title: MedewerkerAvailability
       type: object
